@@ -1,0 +1,54 @@
+.access {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .access-words,
+  .access-actions {
+    width: 100%;
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 50vh;
+  }
+  .access-words {
+    color: $white;
+  }
+  .access-actions {
+    background-color: $white;
+  }
+
+  h1, h2 {
+    width: 100%;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: rgba($white, 0.5);
+  }
+  button {
+    background-color: $black;
+    font-size: 1rem;
+    padding: 0 2rem;
+    height: 3rem;
+    text-transform: uppercase;
+    border-radius: 1.5rem;
+    color: $white;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+
+      .ring, .pill {
+        fill: $white;
+      }
+    }
+  }
+}

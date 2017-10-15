@@ -1,0 +1,73 @@
+.ptr {
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(0, 0, 0);
+  max-height: 2rem;
+
+  .arrow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transform: translate(0, -0.5rem);
+
+    svg {
+      fill: $white;
+      width: 18px;
+      transition: transform 250ms;
+    }
+  }
+  .loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      fill: $white;
+      width: 32px;
+
+      circle {
+        animation: ptr-loading 400ms infinite alternate;
+      }
+      #l1 {
+        animation-delay: 0;
+        transform-origin: 4px 16px;
+      }
+      #l2 {
+        animation-delay: 200ms;
+        transform-origin: 16px 16px;
+      }
+      #l3 {
+        animation-delay: 400ms;
+        transform-origin: 28px 16px;
+      }
+    }
+  }
+
+  &.ptr-pulling {
+    
+    .arrow {
+      display: flex;
+    }
+  }
+  &.ptr-ready {
+    
+    .arrow  {
+      display: flex;
+      
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &.ptr-loading {
+
+    .loading {
+      display: flex;
+    }
+  }
+  &.ptr-done {
+    transition: height 250ms;
+  }
+}

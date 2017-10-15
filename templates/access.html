@@ -1,0 +1,15 @@
+<div class="access">
+  <section class="access-words">
+    <div class="words">
+      <h1>Budgeting for Busy People</h1>
+      <h2>Take control of your saving and spending with as little effort as possible.</h2>
+    </div>
+  </section>
+
+  <section class="access-actions">
+    <button @click="connect()" :disabled="loading">
+      <loading-svg v-show="loading"></loading-svg>
+      Sign in to begin
+    </button>
+  </section>
+</div>

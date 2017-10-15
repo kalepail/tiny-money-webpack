@@ -1,0 +1,462 @@
+.app {
+  padding: 2rem;
+  background-color: $white;
+  min-height: 100vh;
+
+  @include breakpoint($phone) {
+    padding: 0;
+  }
+}
+
+.transactions, .user, .banks {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+  box-shadow: 0 6px 12px $lvl1, 0 4px 8px $lvl2;
+  border-radius: $radius;
+  border: 1px solid $lvl2;
+  border-bottom: none;
+
+  @include breakpoint($phone) {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+  }
+}
+
+.user {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+
+  .block {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+  
+    span {
+      width: 100%;
+    }
+    .label {
+      margin-bottom: 0.5rem;
+    }
+    .value {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  
+    &.assets .value {
+      color: $green;
+    }
+    &.debts .value {
+      color: $red;
+    }
+    &.net .value {
+      color: $blue;
+    }
+  }
+
+  @include breakpoint($phone) {
+    padding: 0;
+    margin: 0;
+
+    .block {
+      padding: 0.7rem 0.5rem;
+      
+      .label {
+        display: none;
+      }
+      .value {
+        font-size: 0.9rem;
+      }
+  
+      &.assets {
+        background-color: rgba($green, 0.1);
+        border-bottom: 1px solid rgba($green, 0.3);
+        border-right: 2px solid $white;
+      }
+      &.debts {
+        background-color: rgba($red, 0.1);
+        border-bottom: 1px solid rgba($red, 0.3);
+        border-left: 2px solid $white;
+        border-right: 2px solid $white;
+      }
+      &.net {
+        background-color: rgba($blue, 0.1);
+        border-bottom: 1px solid rgba($blue, 0.3);
+        border-left: 2px solid $white;
+      }
+    }
+  }
+}
+
+.banks {
+  padding: 1rem 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 2rem auto;
+
+  .bank {
+    width: calc(50% - 0.5rem);
+  }
+
+  h1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    height: 1.5rem;
+
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.5rem;
+    }
+    .net {
+      margin: 0 0 0 0.5rem;
+      padding: 0 4px;
+      border-radius: 2px;
+      line-height: 1.5rem;
+    }
+    .reconnect {
+      background-color: rgba($red, 0.2);
+      color: $red;
+      padding: 0 0.5rem;
+      font-size: 0.7rem;
+      border-radius: 1.5rem;
+      display: flex;
+      align-items: center;
+      height: 1.5rem;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+
+        .ring, .pill {
+          fill: $red;
+        }
+      }
+    }
+
+    &.positive .net {
+      background-color: rgba($green, 0.2);
+      color: $green;
+    }
+    &.negative .net {
+      background-color: rgba($red, 0.2);
+      color: $red;
+    }
+  }
+  li span {
+    margin-right: 0.5rem;
+  }
+
+  .accounts {
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .account {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: inset 2px 0 0 0 $lvl1;
+    padding-left: 0.5rem;
+    line-height: 1.4rem;
+
+    .info {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 0.9rem;
+    }
+    .current {
+      font-weight: 600;
+      margin: 0;
+    }
+    .mask {
+      background-color: $lvl1;
+      padding: 0 4px;
+      font-size: 0.7rem;
+      border-radius: 2px;
+      line-height: 1rem;
+    }
+
+    &.positive .current {
+      color: $green;
+    }
+    &.negative .current {
+      color: $red;
+    }
+  }
+
+  @include breakpoint($phone) {
+    background-color: $lvl3;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    border-radius: $radius;
+    box-shadow: 0 0 0 1px $lvl1;
+
+    .bank {
+      width: 100%;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.transactions {
+  overflow: hidden;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+.transaction {
+  background-color: $white;
+  display: flex;
+  box-shadow: inset 0 -1px 0 0 $lvl1;
+  position: relative;
+  order: 1;
+  width: 100%;
+
+  .content {
+    display: flex;
+    width: 100%;
+    flex-shrink: 0;
+    padding: 1rem 1rem calc(1rem - 4px) 1rem;
+  }
+  .action {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+    color: $white;
+    font-size: 1.2rem;
+    transition: background-color 250ms;
+    padding: 0 1rem;
+  }
+
+  .details {
+    overflow: hidden;
+    width: 100%;
+  }
+  .primary, .secondary {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .primary {
+    margin-bottom: 0.4rem;
+    line-height: 1.2rem;
+  }
+  .secondary {
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .date {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding-right: 1rem;
+    align-content: flex-start;
+    min-width: 3rem;
+  }
+  .day, .month {
+    width: 100%;
+  }
+  .day {
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    line-height: 1.2rem;
+  }
+  .month {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    color: $lvl5;
+  }
+
+  .name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-right: 1rem;
+  }
+  .amount {
+    font-weight: 600;
+  }
+  .category, .tag {
+    font-size: 0.7rem;
+    display: block;
+    border-radius: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+    line-height: 1rem;
+  }
+  .meta {
+    display: flex;
+  }
+  .tag {
+    color: $lvl5;
+  }
+  .categories {
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .category {
+    background-color: $lvl1;
+    margin-left: 4px;
+    padding: 0 4px;
+  }
+
+  &:last-of-type {
+    box-shadow: none;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    transform: translate(0, -50%);
+    z-index: 1;
+    border-radius: 50%;
+  }
+
+  &.positive {
+    
+    &:before {
+      background-color: $green;
+    }
+    
+    .amount {
+      color: $green;
+    }
+    .action {
+      background-color: rgba($green, 0.1);
+
+      &.active {
+        background-color: $green;
+      }
+    }
+  }
+  &.negative {
+
+    &:before {
+      background-color: $red;
+    }
+    .amount {
+      color: $red;
+    }
+    .action {
+      background-color: rgba($red, 0.1);
+
+      &.active {
+        background-color: $red;
+      }
+    }
+  }
+
+  &.pending {
+    background-color: $lvl3;
+  }
+  &.hidden {
+    
+    .day, .name {
+      opacity: 0.2;
+    }
+    .month, .secondary {
+      display: none;
+    }
+  }
+
+  &.left {
+    flex-direction: row-reverse;
+
+    .action {
+      justify-content: flex-end;
+    }
+  }
+  &.right {
+    flex-direction: row;
+
+    .action {
+      justify-content: flex-start;
+    }
+  }
+
+  @include breakpoint($phone) {
+
+    .content {
+      padding: 0.5rem 0.5rem calc(0.5rem - 4px) 0.5rem;
+      font-size: 0.9rem;
+    }
+    .date {
+      padding-right: 0.5rem;
+      min-width: 2.5rem;
+    }
+  }
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 0;
+
+  button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+
+    &.add-account {
+      position: relative;
+      background-color: $lvl1;
+
+      &:after,
+      &:before {
+        content: '';
+        width: 1rem;
+        height: 2px;
+        background-color: $black;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:after {
+
+      }
+      &:before {
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+
+      &:hover {
+        box-shadow: 0 0 0 2px $black;
+      }
+    }
+  }
+
+  @include breakpoint($phone) {
+    padding-bottom: 1rem;
+  }
+}

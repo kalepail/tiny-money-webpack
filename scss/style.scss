@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css?family=Archivo:400,600');
+
+@import "../fonts/**/*.css";
+
+@import "./vamp/*.scss";
+@import "./vendor/*.scss";
+@import "./elements/*.scss";
+@import "./pages/*.scss";
+
+* {
+  box-sizing: border-box;
+}
+html, body {
+  font-size: 16px;
+}
+html {
+  text-size-adjust: none;
+}
+body {
+  font-family: $font-family;
+  color: $black;
+  background-color: $black;
+}
+.freeze {
+  overflow: hidden;
+}
+[v-cloak] {
+  display: none;
+}
+
+button {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: none;
+  font-family: $font-family;
+  color: $black;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+}
