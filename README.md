@@ -1,7 +1,7 @@
 # Tiny Money Budget
-> App -> https://budget.tiny.money
-> App micro services -> https://micro.tiny.money
-> Underlying API -> https://tiny.money
+> App -> https://budget.tiny.money  
+> App micro services -> https://micro.tiny.money  
+> Underlying API -> https://tiny.money  
 
 ## Demo
 > https://demo.tiny.money
