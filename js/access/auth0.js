@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import { $Root } from '../root/root';
+import moment from 'moment-timezone';
 
 const axios = Axios.create({
   baseURL: 'https://micro.tiny.money',
@@ -43,7 +44,8 @@ export function accessUser(self) {
 
 export function getUser(auth0_id) {
   axios.post('/access', {
-    auth0_id: auth0_id
+    auth0_id: auth0_id,
+    timezone: moment.tz.guess()
   })
   .then((res) => {
     self.loading = false;

@@ -407,6 +407,8 @@ export const $App = {
 
       localStorage.removeItem('tm_user');
       localStorage.removeItem('tm_token');
+      $Root.tm_user = null;
+      $Root.tm_token = null;
     }
   }
 }
