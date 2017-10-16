@@ -7,10 +7,10 @@ const config = {
     port: 8010,
     hot: true,
     contentBase: commonPaths.outputPath,
-    host: 'demo.lvh.me'
+    host: 'lvh.me'
   },
   output: {
-    publicPath: 'http://demo.lvh.me:8010/'
+    publicPath: 'http://lvh.me:8010/'
   },
   module: {
     rules: [{

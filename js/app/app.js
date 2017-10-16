@@ -405,8 +405,6 @@ export const $App = {
       localStorage.removeItem('USER');
       localStorage.removeItem('LAST');
 
-      $Root.tm_user = null;
-      $Root.tm_token = null;
       localStorage.removeItem('tm_user');
       localStorage.removeItem('tm_token');
     }

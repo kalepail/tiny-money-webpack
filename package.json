@@ -7,7 +7,9 @@
     "prepare": "npm run lint && npm run trash",
     "dev": "webpack-dev-server",
     "prod": "npm run prepare && webpack --env=prod",
-    "deploy": "npm run prod && surge ./dist https://budget.tiny.money && surge ./dist https://demo.tiny.money"
+    "budget": "npm run prod && surge ./dist https://budget.tiny.money",
+    "demo": "npm run prod && surge ./dist https://demo.tiny.money",
+    "deploy": "npm run budget && npm run demo"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
