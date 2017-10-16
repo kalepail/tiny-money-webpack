@@ -28,6 +28,7 @@
 .user {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   padding: 1rem;
   margin-bottom: 2rem;
   background-color: $white;
@@ -61,11 +62,11 @@
   }
 
   @include breakpoint($phone) {
-    padding: 0;
+    padding: 0 0.5rem;
     margin: 0;
 
     .block {
-      padding: 0.7rem 0.5rem;
+      padding: 0.7rem 0;
       
       .label {
         display: none;
@@ -75,20 +76,24 @@
       }
   
       &.assets {
+        border-radius: 0 0 0 $radius;
         background-color: rgba($green, 0.1);
-        border-bottom: 1px solid rgba($green, 0.3);
-        border-right: 2px solid $white;
+        order: 0;
       }
       &.debts {
+        border-radius: 0 0 $radius 0;
         background-color: rgba($red, 0.1);
-        border-bottom: 1px solid rgba($red, 0.3);
-        border-left: 2px solid $white;
-        border-right: 2px solid $white;
+        order: 2;
       }
       &.net {
+        border-radius: 0 0 $radius $radius;
+        padding: 0.9rem 0;
         background-color: rgba($blue, 0.1);
-        border-bottom: 1px solid rgba($blue, 0.3);
-        border-left: 2px solid $white;
+        order: 1;
+        
+        .value {
+          font-size: 1.1rem;
+        }
       }
     }
   }
