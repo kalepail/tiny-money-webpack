@@ -72,24 +72,28 @@
         display: none;
       }
       .value {
-        font-size: 0.9rem;
+        font-size: 1rem;
       }
   
       &.assets {
         border-radius: 0 0 0 $radius;
         background-color: rgba($green, 0.1);
+        box-shadow: $radius 0 0 rgba($green, 0.1);
         order: 0;
       }
       &.debts {
         border-radius: 0 0 $radius 0;
         background-color: rgba($red, 0.1);
         order: 2;
+        box-shadow: -$radius 0 0 rgba($red, 0.1);
       }
       &.net {
         border-radius: 0 0 $radius $radius;
-        padding: 0.9rem 0;
-        background-color: rgba($blue, 0.1);
+        padding: 0.8rem 0;
+        background-color: #ebf1ff;
         order: 1;
+        z-index: 1;
+        position: relative;
         
         .value {
           font-size: 1.1rem;
