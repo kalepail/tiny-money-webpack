@@ -36,7 +36,7 @@ export const $Access = {
         autoclose: true,
         focusInput: true,
         icon: './favicon.png',
-        primaryColor: '#A100FF',
+        primaryColor: '#3274ff',
         dict: {
           title: 'Tiny Money'
         }
