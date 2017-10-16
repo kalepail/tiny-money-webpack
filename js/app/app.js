@@ -131,7 +131,7 @@ export const $App = {
   methods: {
     getTransactions(callback) {
       const lte = moment().endOf('month');
-      const gte = this.demo ? moment('1900-01-01') : moment().subtract(1, 'month');
+      const gte = this.demo ? moment('2016-03-01') : moment().subtract(1, 'month');
 
       this.$http.get(`${this.tmUser}/transactions`, {
         params: {
