@@ -44,9 +44,19 @@ export default function($Vue) {
           apiVersion: 'v2',
           token: res.data.public_token,
           onSuccess(public_token, metadata) {
-            bank.loading = false;
             console.log(public_token, metadata);
-            $Vue.refresh();
+
+            $Vue.$http.get('ping')
+              .then((res) => {
+                bank.loading = false;
+                console.log(res.data);
+                $Vue.refresh();
+              })
+              .catch((err) => {
+                bank.loading = false;
+                console.error(err.data);
+                $Vue.logout();
+              });
           },
           onExit(err, metadata) {
             console.error(err);
