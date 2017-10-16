@@ -205,7 +205,6 @@
   }
 
   @include breakpoint($phone) {
-    background-color: $lvl3;
     width: calc(100% - 2rem);
     margin: 1rem;
     border-radius: $radius;
@@ -423,7 +422,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 2rem 0 0;
+  margin-top: 2rem;
 
   button {
     width: 3rem;
@@ -459,6 +458,7 @@
   }
 
   @include breakpoint($phone) {
+    margin-top: 1rem;
     padding-bottom: 1rem;
   }
 }

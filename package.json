@@ -9,7 +9,7 @@
     "prod": "npm run prepare && webpack --env=prod",
     "budget": "npm run prod && surge ./dist https://budget.tiny.money",
     "demo": "npm run prod && surge ./dist https://demo.tiny.money",
-    "deploy": "npm run budget && npm run demo"
+    "deploy": "npm run prod && surge ./dist https://budget.tiny.money && surge ./dist https://demo.tiny.money"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
