@@ -9,7 +9,6 @@ export default function($Vue) {
     product: ['transactions'],
     webhook: 'https://tiny.money/webhooks/plaid',
     clientName: 'Tiny Money',
-    selectAccount: false,
     apiVersion: 'v2',
     onSuccess(public_token, metadata) {
       $Vue.$http.post(`${$Vue.tmUser}/banks/exchange`, {
@@ -45,7 +44,7 @@ export default function($Vue) {
           token: res.data.public_token,
           onSuccess(public_token, metadata) {
             console.log(public_token, metadata);
-
+    
             $Vue.$http.get('ping')
               .then((res) => {
                 bank.loading = false;
@@ -64,7 +63,7 @@ export default function($Vue) {
             bank.loading = false;
           }
         });
-  
+        
         reconnect_handler.open();
       })
       .catch((err) => {
