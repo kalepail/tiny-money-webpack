@@ -45,17 +45,19 @@ export default function($Vue) {
           onSuccess(public_token, metadata) {
             console.log(public_token, metadata);
     
-            $Vue.$http.get('ping')
-              .then((res) => {
-                bank.loading = false;
-                console.log(res.data);
-                $Vue.refresh();
-              })
-              .catch((err) => {
-                bank.loading = false;
-                console.error(err.data);
-                $Vue.logout();
-              });
+            $Vue.$http.get('ping', {
+              params: {update: bank._user}
+            })
+            .then((res) => {
+              bank.loading = false;
+              console.log(res.data);
+              $Vue.refresh();
+            })
+            .catch((err) => {
+              bank.loading = false;
+              console.error(err.data);
+              $Vue.logout();
+            });
           },
           onExit(err, metadata) {
             console.error(err);
