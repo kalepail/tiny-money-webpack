@@ -163,7 +163,7 @@ export const $App = {
     },
     parseTransactions(transactions, gte) {
       transactions = transactions || this.transactions;
-      gte = gte || moment().subtract(1, 'month');
+      gte = gte || this.demo ? moment('2016-03-01') : moment().subtract(1, 'month');
 
       this.transactions = _
         .chain(this.transactions)
@@ -206,6 +206,7 @@ export const $App = {
 
       const clone = _.cloneDeep(this.transactions);
       let clean = omit(clone, ['target', 'action', 'hidden']);
+
       localStorage.setItem('TRANSACTIONS', JSON.stringify(clean));
     },
     panStartTransaction(e, t) {
