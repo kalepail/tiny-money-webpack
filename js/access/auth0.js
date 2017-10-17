@@ -10,8 +10,8 @@ const axios = Axios.create({
 
 const auth0 = window.auth0;
 const webAuth = new auth0.WebAuth({
-  domain: 'tinymoney.auth0.com',
-  clientID: 'w2VvkbepeScixJhX92OkQNyEZ85AZ1L9'
+  clientID: 'w2VvkbepeScixJhX92OkQNyEZ85AZ1L9',
+  domain: 'tinymoney.auth0.com'
 });
 
 export function accessUser(self) {
