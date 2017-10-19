@@ -1,4 +1,6 @@
 <div class="app">
+  <budget v-show="budget" :budget="budget"></budget>
+
   <v-touch
     tag="div"
     class="user"
@@ -53,7 +55,7 @@
 
           <div class="secondary">
             <div class="meta">
-              <span class="tag">{{t.info}}</span>
+              <span class="tag">{{t.bank}} {{t.mask}}</span>
             </div>
 
             <ul class="categories">
@@ -65,7 +67,7 @@
 
       <div 
         class="action genericon" 
-        :class="[{active: t.active, animate: t.animate}, t.hidden ? 'genericon-show' : 'genericon-hide']"
+        :class="[{active: t.active, animate: t.animate}, t.hidden ? 'genericon-show' : 'genericon-tag']"
       ></div>
     </v-touch>
   </transition-group>
@@ -115,7 +117,6 @@
       <div class="content">
         <div class="date">
           <span class="day">{{t.day}}</span>
-          <!-- <span class="month">{{t.month}}</span> -->
         </div>
 
         <div class="details">
@@ -123,16 +124,6 @@
             <div class="name">{{t.name}}</div>
             <div class="amount">{{t.amount | money}}</div>
           </div>
-
-          <!-- <div class="secondary">
-            <div class="meta">
-              <span class="tag">{{t.info}}</span>
-            </div>
-
-            <ul class="categories">
-              <li v-for="c in t.category" class="category">{{c}}</li>
-            </ul>
-          </div> -->
         </div>
       </div>
 

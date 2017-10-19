@@ -16,6 +16,7 @@
   border-radius: $radius;
   border: 1px solid $lvl2;
   border-bottom: none;
+  background-color: $white;
 
   @include breakpoint($phone) {
     border: none;
@@ -31,7 +32,6 @@
   align-items: flex-start;
   padding: 1rem;
   margin-bottom: 2rem;
-  background-color: $white;
 
   .block {
     display: flex;
@@ -112,7 +112,6 @@
   align-items: flex-start;
   justify-content: space-between;
   margin: 2rem auto;
-  background-color: $white;
 
   .bank {
     width: calc(50% - 0.5rem);
@@ -236,7 +235,6 @@
   }
 }
 .transaction {
-  background-color: $white;
   display: flex;
   box-shadow: inset 0 -1px 0 0 $lvl1;
   position: relative;
@@ -258,6 +256,11 @@
     font-size: 1.2rem;
     transition: background-color 250ms;
     padding: 0 1rem;
+    background-color: rgba($blue, 0.1);
+
+    &.active {
+      background-color: $blue;
+    }
   }
 
   .details {
@@ -364,10 +367,10 @@
       color: $green;
     }
     .action {
-      background-color: rgba($green, 0.1);
+      // background-color: rgba($green, 0.1);
 
       &.active {
-        background-color: $green;
+        // background-color: $green;
       }
     }
   }
@@ -380,10 +383,10 @@
       color: $red;
     }
     .action {
-      background-color: rgba($red, 0.1);
+      // background-color: rgba($red, 0.1);
 
       &.active {
-        background-color: $red;
+        // background-color: $red;
       }
     }
   }

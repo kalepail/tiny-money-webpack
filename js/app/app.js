@@ -13,6 +13,7 @@ import Loading from '../../components/loading-svg.html';
 import Plaid from './plaid';
 import Ptr from './ptr';
 import { $Root } from '../root/root';
+import { $Budget } from './budget';
 
 Velocity.defaults.mobileHA = false;
 Velocity.defaults.duration = 250;
@@ -33,13 +34,15 @@ export const $App = {
       last: localStorage.getItem('LAST'),
       refreshing: false,
       scrolling: false,
-      step: 0
+      step: 0,
+      budget: false
     }
   },
   components: {
     'loading-svg': {
       template: Loading
-    }
+    },
+    'budget': $Budget
   },
   http: {
     root: 'https://tiny.money/v1/',
@@ -64,9 +67,14 @@ export const $App = {
   },
   mounted() {
     Ptr(this);
+
+    if (this.transactions)
+      this.budget = {
+        t: this.transactions[0]
+      }
   },
   watch: {
-
+    
   },
   computed: {
     sortedTransactions() {
@@ -176,7 +184,6 @@ export const $App = {
           const date = moment(t.date);
           const bank = _.find(this.banks, {_id: t.bank_id});
           
-          t.info = '';
           t.klass = [];
           t.day = date.date();
           t.month = date.format('MMM');
@@ -191,10 +198,7 @@ export const $App = {
           }
 
           if (bank.name)
-            t.info += `${bank.name} `;
-
-          if (t.mask)
-            t.info += `${t.mask} `;
+            t.bank = bank.name;
 
           if (_.includes(this.hidden, t._id)) {
             Vue.set(t, 'hidden', true);
@@ -251,10 +255,14 @@ export const $App = {
 
           if (e.deltaX >= 0) {
             offset = e.deltaX - offset;
-            this.animateTransaction(1, t, offset);
           } else {
             offset = e.deltaX + offset;
-            this.animateTransaction(0, t, offset);
+          }
+
+          this.budget = {
+            o: offset,
+            t,
+            e
           }
 
           t.action.classList.remove('active');
@@ -274,39 +282,6 @@ export const $App = {
       }
 
       this.scrolling = false;
-    },
-
-    animateTransaction(direction, t, offset) {
-      Velocity(t.target, {
-        height: 0,
-        right: offset
-      }).then(() => {
-        if (t.hidden) {
-          this.hidden = _.without(this.hidden, t._id);
-          Vue.set(t, 'hidden', false);
-        } else {
-          this.hidden.push(t._id);
-          Vue.set(t, 'hidden', true);
-        }
-
-        t.target.style.right = '';
-        t.target.style.transform = '';
-        t.target.style.overflow = 'hidden';
-
-        return hiddenPatch(this);
-      }).then(() => {
-        t.target.height = t.target.clientHeight;
-        t.target.style.height = '0px';
-
-        Velocity(t.target, {
-          height: t.target.height
-        }, {
-          complete: () => {
-            t.target.style.height = '';
-            t.target.style.overflow = '';
-          }
-        });
-      });
     },
 
     enterTransaction(target) {

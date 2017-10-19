@@ -29,8 +29,20 @@ body {
 [v-cloak] {
   display: none;
 }
+::-webkit-input-placeholder {
+  color: $lvl5;
+}
+::-moz-placeholder {
+  color: $lvl5;
+}
+:-ms-input-placeholder {
+  color: $lvl5;
+}
+:-moz-placeholder {
+  color: $lvl5;
+}
 
-button {
+button, input, textarea {
   appearance: none;
   outline: none;
   border: none;
@@ -43,5 +55,8 @@ button {
   align-items: center;
   justify-content: center;
   align-content: center;
+  font-size: 1rem;
+}
+button {
   cursor: pointer;
 }
