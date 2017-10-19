@@ -35,7 +35,7 @@ export const $Access = {
       lock.magiclink({
         autoclose: true,
         focusInput: true,
-        icon: './favicon.png',
+        icon: './logo.png',
         primaryColor: '#3274ff',
         dict: {
           title: 'Tiny Money'

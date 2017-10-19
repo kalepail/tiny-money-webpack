@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonPaths = require('./common-paths');
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: './index.js',
@@ -16,28 +17,38 @@ module.exports = {
       loader: 'import-glob'
     },{
       test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /(node_modules)/
+      exclude: /(node_modules)/,
+      loader: 'babel-loader'
     },{
       test: /\.html$/,
-      loader: 'html-loader'
+      exclude: /node_modules/,
+      use: {
+        loader: 'html-loader',
+        options: {
+          root: path.resolve(__dirname, 'images'),
+          attrs: ['link:href']
+        }
+      }
     },{
       test: /\.(woff2?|ttf|eot|txt)$/,
+      exclude: /node_modules/,
       use: [{
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]'
+          name: '[hash].[name].[ext]'
         }
-      }],
-      exclude: /node_modules/
+      }]
     },{
       test: /\.(jpe?g|png|gif|svg)$/,
+      exclude: /node_modules/,
       use: [{
-        loader:'url-loader',
+        loader:'file-loader',
         options: {
-          name: '[name].[ext]',
-          limit: 10000
+          name: '[hash].[name].[ext]'
         }
+      },{
+        loader: 'image-webpack-loader',
+        query: {}
       }]
     }]
   },

@@ -64,7 +64,7 @@
   @include breakpoint($phone) {
     background-color: transparent;
     padding: 0 1rem;
-    margin: 0;
+    margin-bottom: 1rem;
 
     .block {
       padding: 0.7rem 0;

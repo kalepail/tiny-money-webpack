@@ -1,9 +1,6 @@
 // TXT
 import './robots.txt';
 
-// IMG
-import './images/favicon.png';
-
 // SASS
 import './scss/style.scss';
 
