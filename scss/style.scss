@@ -20,8 +20,8 @@ html {
 }
 body {
   font-family: $font-family;
-  color: $black;
-  background-color: $black;
+  color: $blue;
+  background-color: $blue;
 }
 .freeze {
   overflow: hidden;
@@ -42,20 +42,26 @@ body {
   color: $lvl5;
 }
 
-button, input, textarea {
-  appearance: none;
-  outline: none;
-  border: none;
-  background: none;
-  font-family: $font-family;
-  color: $black;
-  padding: 0;
-  margin: 0;
+button, input, textarea, select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   align-content: center;
   font-size: 1rem;
+  font-family: $font-family;
+  color: $blue;
+  outline: none;
+  border: none;
+  background: none;
+}
+button, input, textarea {
+  padding: 0;
+  margin: 0;
+}
+button, input[type="text"], textarea {
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
 }
 button {
   cursor: pointer;

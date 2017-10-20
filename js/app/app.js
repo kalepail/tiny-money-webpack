@@ -1,8 +1,7 @@
 import Vue from 'vue/dist/vue.esm';
 import VueResource from 'vue-resource';
 import VueTouch from 'vue-touch';
-import accounting from 'accounting';
-import BigNumber from 'bignumber.js';
+import { moneyFilter } from '../utils/filters';
 import Velocity from 'velocity-animate';
 import _ from 'lodash';
 import moment from 'moment';
@@ -68,7 +67,7 @@ export const $App = {
   mounted() {
     Ptr(this);
 
-    if (this.transactions)
+    if (this.transactions.length)
       this.budget = {
         t: this.transactions[0]
       }
@@ -128,13 +127,7 @@ export const $App = {
     }
   },
   filters: {
-    money(amount) {
-      if (!amount)
-        return '$0.00';
-
-      amount = new BigNumber(String(amount)).abs().toFixed(2);
-      return accounting.formatMoney(amount);
-    }
+    money: moneyFilter
   },
   methods: {
     getTransactions(callback) {

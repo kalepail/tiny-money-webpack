@@ -452,7 +452,7 @@
         content: '';
         width: 1rem;
         height: 2px;
-        background-color: $black;
+        background-color: $blue;
         position: absolute;
         left: 50%;
         top: 50%;
@@ -466,7 +466,7 @@
       }
 
       &:hover {
-        box-shadow: 0 0 0 2px $black;
+        background-color: $lvl2;
       }
     }
   }

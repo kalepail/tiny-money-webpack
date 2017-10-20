@@ -1,6 +1,7 @@
 import { accessUser, getUser } from './auth0';
 import Access from '../../templates/access.html';
 import Loading from '../../components/loading-svg.html';
+import logo from '../../images/logo.png';
 
 const Auth0LockPasswordless = window.Auth0LockPasswordless;
 
@@ -35,7 +36,7 @@ export const $Access = {
       lock.magiclink({
         autoclose: true,
         focusInput: true,
-        icon: './logo.png',
+        icon: logo,
         primaryColor: '#3274ff',
         dict: {
           title: 'Tiny Money'

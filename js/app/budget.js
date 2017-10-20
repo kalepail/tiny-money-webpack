@@ -1,6 +1,10 @@
 import Budget from '../../components/budget.html';
 import Velocity from 'velocity-animate';
+import { moneyFilter } from '../utils/filters';
 import _ from 'lodash';
+// import Calendar from '../utils/calendar';
+// import $ from 'jquery';
+// import moment from 'moment';
 
 Velocity.defaults.mobileHA = false;
 Velocity.defaults.duration = 250;
@@ -24,16 +28,29 @@ export const $Budget = {
         name: 'European Vacation',
         active: true
       }],
-      filter: ''
+      filter: '',
+      mirror: false
     }
   },
   created() {
+    console.log(this.budget.t);
 
+    this.target = {
+      // type: 'spend',
+      interval: 'month',
+      name: 'Apartment Rent',
+      amount: 850,
+      count: 1
+    }
+  },
+  mounted() {
+    // new Calendar({
+    //   element: $('.daterange--single'),
+    //   current_date: moment().add(6, 'months'),
+    //   format: {input: 'YYYY-MM-DD'}
+    // });
   },
   watch: {
-    // budget() {
-    //   console.log(this.budget.t);
-    // },
     filter() {
       this.targets = _
       .chain(this.targets)
@@ -42,11 +59,34 @@ export const $Budget = {
         return target;
       })
       .value();
+
+      const active = _.filter(this.targets, (target) => target.active);
+
+      if (
+        active.length === 1 &&
+        sanitizeString(active[0].name) === sanitizeString(this.filter)
+      ) this.mirror = true;
+
+      else 
+        this.mirror = false;
     }
+  },
+  filters: {
+    money: moneyFilter
   },
   methods: {
     createTarget() {
-      this.target = {};
+      this.target = {
+        // type: 'spend',
+        name: this.filter,
+        amount: Math.abs(this.budget.t.amount),
+        count: 1,
+        interval: 'month'
+      }
+    },
+
+    goback() {
+      this.target = false;
     },
 
     cancel(event) {
@@ -114,5 +154,5 @@ export const $Budget = {
 }
 
 export function sanitizeString(str) {
-  return str.toLowerCase();
+  return str.replace(/\s/gi, '-').toLowerCase();
 }

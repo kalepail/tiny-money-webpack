@@ -1,34 +1,97 @@
 <div class="budget-wrapper" @click="cancel($event)">
-  <div class="budget" v-if="budget">
-
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Name</th>
-          <th>Bank</th>
-          <th>Account</th>
-        </tr>  
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>{{budget.t.date}}</td>
-          <td>{{budget.t.name}}</td>
-          <td>{{budget.t.bank}}</td>
-          <td>{{budget.t.mask}}</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="search">
-      <input type="text" placeholder="Search targets" v-model="filter">
+  <div class="budget">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Bank</th>
+            <th>Account</th>
+          </tr>  
+        </thead>
+  
+        <tbody>
+          <tr>
+            <td>{{budget.t.date}}</td>
+            <td class="name">{{budget.t.name}}</td>
+            <td :class="budget.t.klass">{{budget.t.amount | money}}</td>
+            <td class="bank">{{budget.t.bank}}</td>
+            <td>{{budget.t.mask}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <ul>
-      <li v-for="target in targets" v-show="target.active" :key="target.id">{{target.name}}</li>
-      <li @click="createTarget()"><i class="genericon genericon-plus"></i> Create a new <span v-if="filter">{{ filter }}</span> target</li>
-    </ul>
+    <div class="targets-create" v-show="target">
+      <label class="row">
+        <i class="goback genericon genericon-previous" @click="goback()"></i>
+        <input type="text" placeholder="Target title" v-model="target.name">
+      </label>
+
+      <!-- <div class="row type">
+        <label>
+          <input type="radio" name="type[]" value="spend" v-model="target.type">
+          <span>Spend</span>
+        </label>
+
+        <label>
+          <input type="radio" name="type[]" value="save" v-model="target.type">
+          <span>Save</span>
+        </label>
+      </div> -->
+
+      <div class="settings">
+        <label class="row">
+          Amount
+          <input type="text" v-model="target.amount">
+        </label>
+
+        <label class="row">
+          Every
+          <input type="text" v-model="target.count">
+        </label>
+
+        <label class="row">
+          Interval
+          <select v-model="target.interval">
+            <option value="day">Day</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+            <option value="year">Year</option>
+          </select>
+        </label>
+
+        <!-- <label class="row">
+          Date
+          <div class="daterange daterange--single"></div>
+        </label> -->
+      </div>
+    </div>
+
+    <div class="targets-search" v-show="!target">
+      <div class="search">
+        <input type="text" placeholder="Search targets" v-model="filter">
+      </div>
+  
+      <ul class="targets">
+        <li 
+          class="target"
+          v-for="target in targets" 
+          v-show="target.active" 
+          :key="target.id">{{target.name}}</li>
+        <li 
+          class="target"
+          @click="createTarget()" 
+          v-show="!mirror">
+          <i class="genericon genericon-plus"></i> 
+          Create a new 
+          <span v-show="filter">{{ filter }}</span> 
+          target
+        </li>
+      </ul>
+    </div>
 
     <!-- <button @click="save()">Save</button> -->
   </div>
