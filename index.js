@@ -1,5 +1,5 @@
 // TXT
-import './robots.txt';
+// import './robots.txt';
 
 // SASS
 import './scss/style.scss';
