@@ -30,18 +30,6 @@
         <input type="text" placeholder="Target title" v-model="target.name">
       </label>
 
-      <!-- <div class="row type">
-        <label>
-          <input type="radio" name="type[]" value="spend" v-model="target.type">
-          <span>Spend</span>
-        </label>
-
-        <label>
-          <input type="radio" name="type[]" value="save" v-model="target.type">
-          <span>Save</span>
-        </label>
-      </div> -->
-
       <div class="settings">
         <label class="row">
           Amount
@@ -63,10 +51,9 @@
           </select>
         </label>
 
-        <!-- <label class="row">
-          Date
-          <div class="daterange daterange--single"></div>
-        </label> -->
+        <label class="row align-left">
+          <button @click="save()">Create & Add</button>
+        </label>
       </div>
     </div>
 
@@ -80,19 +67,18 @@
           class="target"
           v-for="target in targets" 
           v-show="target.active" 
+          @click="save()"
           :key="target.id">{{target.name}}</li>
         <li 
           class="target"
           @click="createTarget()" 
           v-show="!mirror">
           <i class="genericon genericon-plus"></i> 
-          Create a new 
+          Create 
           <span v-show="filter">{{ filter }}</span> 
           target
         </li>
       </ul>
     </div>
-
-    <!-- <button @click="save()">Save</button> -->
   </div>
 </div>

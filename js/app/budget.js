@@ -3,9 +3,6 @@ import Velocity from 'velocity-animate';
 import { moneyFilter } from '../utils/filters';
 // import { hiddenPatch } from './hidden';
 import _ from 'lodash';
-// import Calendar from '../utils/calendar';
-// import $ from 'jquery';
-// import moment from 'moment';
 
 Velocity.defaults.mobileHA = false;
 Velocity.defaults.duration = 250;
@@ -37,19 +34,14 @@ export const $Budget = {
     console.log(this.budget.t);
 
     this.target = {
-      // type: 'spend',
-      interval: 'month',
-      name: 'Apartment Rent',
-      amount: 850,
-      count: 1
+      name: this.budget.t.name,
+      amount: Math.abs(this.budget.t.amount),
+      count: 1,
+      interval: 'month'
     }
   },
   mounted() {
-    // new Calendar({
-    //   element: $('.daterange--single'),
-    //   current_date: moment().add(6, 'months'),
-    //   format: {input: 'YYYY-MM-DD'}
-    // });
+    
   },
   watch: {
     filter() {
@@ -78,7 +70,6 @@ export const $Budget = {
   methods: {
     createTarget() {
       this.target = {
-        // type: 'spend',
         name: this.filter,
         amount: Math.abs(this.budget.t.amount),
         count: 1,
