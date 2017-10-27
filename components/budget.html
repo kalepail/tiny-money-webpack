@@ -56,10 +56,10 @@
         <label class="row">
           Interval
           <select v-model="target.interval">
-            <option value="day">Day</option>
-            <option value="week">Week</option>
-            <option value="month">Month</option>
-            <option value="year">Year</option>
+            <option value="day" v-html="plurize('Day')"></option>
+            <option value="week" v-html="plurize('Week')"></option>
+            <option value="month" v-html="plurize('Month')"></option>
+            <option value="year" v-html="plurize('Year')"></option>
           </select>
         </label>
 

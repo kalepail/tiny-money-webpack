@@ -6,7 +6,7 @@
     "trash": "rimraf ./dist",
     "prepare": "npm run lint && npm run trash",
     "dev": "webpack-dev-server",
-    "prod": "npm run prepare && webpack --env=prod",
+    "prod": "npm run prepare && webpack --env=production",
     "budget": "npm run prod && surge ./dist https://budget.tiny.money",
     "demo": "npm run prod && surge ./dist https://demo.tiny.money",
     "deploy": "npm run prod && surge ./dist https://budget.tiny.money && surge ./dist https://demo.tiny.money"
@@ -45,6 +45,7 @@
     "axios": "^0.16.2",
     "bignumber.js": "^4.1.0",
     "hammerjs": "^2.0.8",
+    "hard-source-webpack-plugin": "^0.4.9",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",

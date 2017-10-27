@@ -5,7 +5,7 @@ import { moneyFilter } from '../utils/filters';
 import Velocity from 'velocity-animate';
 import _ from 'lodash';
 import moment from 'moment';
-import { hiddenPatch, hiddenGet } from './hidden';
+import { hiddenGet } from './hidden';
 import omit from '../utils/omit';
 import App from '../../templates/app.html';
 import Loading from '../../components/loading-svg.html';

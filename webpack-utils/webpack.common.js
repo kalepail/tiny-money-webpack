@@ -1,3 +1,4 @@
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const commonPaths = require('./common-paths');
 const webpack = require('webpack');
@@ -53,6 +54,7 @@ module.exports = {
     }]
   },
   plugins: [
+    new HardSourceWebpackPlugin(),
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: './index.html',

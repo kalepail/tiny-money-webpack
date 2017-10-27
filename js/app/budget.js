@@ -1,6 +1,7 @@
 import Budget from '../../components/budget.html';
 import Velocity from 'velocity-animate';
 import { moneyFilter } from '../utils/filters';
+// import { hiddenPatch } from './hidden';
 import _ from 'lodash';
 // import Calendar from '../utils/calendar';
 // import $ from 'jquery';
@@ -149,6 +150,10 @@ export const $Budget = {
           }
         });
       });
+    },
+
+    plurize(value) {
+      return value + (this.target && this.target.count > 1 ? 's' : '');
     }
   }
 }
