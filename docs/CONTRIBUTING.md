@@ -10,10 +10,8 @@ If you haven't already, we recommend reading [Tyler's][tyler] article,
 Our [code of conduct][code-of-conduct] is the [Contributor Covenant][contributor-covenant].
 If you're unfamiliar with it, we strongly urge you to read it.
 
-<p class="callout">
-  The first rule of Tiny Money is: be kind.<br>
-  The second rule of Tiny Money is: be kind.
-</p>
+> The first rule of Tiny Money is: be kind.<br>
+> The second rule of Tiny Money is: be kind.
 
 
 ## Style guides
@@ -72,15 +70,3 @@ provided linter configurations.
 [tyler]: https://github.com/tyvdh
 [vue]: https://vuejs.org/
 [vue-style]: https://vuejs.org/v2/style-guide/
-
-
-
-
-<style>
-  .callout {
-    display: flex;
-    font: italic 1.8vw/2 Georgia;
-    justify-content: center;
-    text-align: right;
-  }
-</style>
