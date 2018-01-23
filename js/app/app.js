@@ -386,7 +386,7 @@ export const $App = {
     },
 
     accountKlass(a) {
-      const balances = a.type === 'depository' ? -a.balances.current : a.balances.current;
+      const balances = a.type === 'depository' || a.type === 'other' ? -a.balances.current : a.balances.current;
       return balances >= 0 ? 'negative' : 'positive'
     },
 
