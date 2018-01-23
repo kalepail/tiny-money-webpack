@@ -120,12 +120,20 @@ export const $App = {
     }
   },
   filters: {
-    money(amount) {
-      if (!amount)
+    money(raw, invert = false) {
+      if (!raw)
         return '$0.00';
 
-      amount = new BigNumber(String(amount)).abs().toFixed(2);
-      return accounting.formatMoney(amount);
+      if (invert)
+        raw = -raw;
+
+      const clean = new BigNumber(String(raw)).abs().toFixed(2);
+
+      if (!invert || raw >= 0)
+        return accounting.formatMoney(clean);
+
+      else
+        return accounting.formatMoney(clean, '-$');
     }
   },
   methods: {
